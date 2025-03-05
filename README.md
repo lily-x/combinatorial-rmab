@@ -1,6 +1,6 @@
 # Combinatorial restless bandits
 
-This code implements and evaluates algorithms for the paper [**Reinforcement learning with combinatorial actions for coupled restless bandits**]() which appeared at the International Conference on Learning Representations (ICLR 2025). In this paper we consider reinforcement learning (RL) with combinatorial actions, specifically for restless bandits.
+This code implements and evaluates algorithms for the paper [**Reinforcement learning with combinatorial actions for coupled restless bandits**](https://arxiv.org/abs/2503.01919) by Lily Xu, Bryan Wilder, Elias B. Khalil, and Milind Tambe which appeared at the International Conference on Learning Representations (ICLR 2025). In this paper we consider reinforcement learning (RL) with combinatorial actions, specifically for restless bandits.
 
 Typical restless bandits assume a simple budget constraint, which allow planning to be decoupled across each arm to learn an optimal policy for each arm separately, then using a simple threshold-based heuristic to select the optimal action. 
 
@@ -8,10 +8,10 @@ Here, we introduce **coRMAB**, a broader class of problems with _combinatorial a
 
 In this codebase, we implement and evaluate SEQUOIA. We include a number of simulation environments introduced in the paper, including:
 
-1. multiple interventions,
-2. path-constrained,
-3. schedule-constrained, and
-4. capacity-constrained.
+1. path-constrained,
+2. schedule-constrained,
+3. capacity-constrained, and
+4. multiple interventions.
 
 This library also implements and compares against a variety of baselines:  null (no action), random, sampling, myopic, iterative myopic, iterative DQN.
 
@@ -41,19 +41,6 @@ The following options are available:
 The four domains of coRMAB implemented here are:
 
 
-### **Capacity-constrained** (`ConstrainedRMAB` in `constrained.py`)
-
-Each worker is limited by a capacity constriant of how many arms they can pull; each arm has a differing cost.
-
-```
-python driver.py -s 0 -H 5 -J 5 -B 4 -p run_note --rmab_type constrained -V 1 -K 10 -F
-
-python driver.py -s 0 -H 20 -J 20 -B 5 -p run_note --rmab_type constrained -V 50 -K 100
-
-python driver.py -s 0 -H 20 -J 100 -B 20 -p run_note --rmab_type constrained -V 50 -K 100
-```
-
-
 ###  **Path-constrained**  (`RoutingRMAB` in `routing.py`)  
 
 Each arm lies within a network, and we must find a valid route.
@@ -79,7 +66,21 @@ python driver.py -s 0 -H 20 -J 20 -B 5 -p run_note --rmab_type scheduling -V 50 
 python driver.py -s 0 -H 20 -J 100 -B 20 -p run_note --rmab_type scheduling -V 50 -K 100
 ```
 
-  
+
+### **Capacity-constrained** (`ConstrainedRMAB` in `constrained.py`)
+
+Each worker is limited by a capacity constriant of how many arms they can pull; each arm has a differing cost.
+
+```
+python driver.py -s 0 -H 5 -J 5 -B 4 -p run_note --rmab_type constrained -V 1 -K 10 -F
+
+python driver.py -s 0 -H 20 -J 20 -B 5 -p run_note --rmab_type constrained -V 50 -K 100
+
+python driver.py -s 0 -H 20 -J 100 -B 20 -p run_note --rmab_type constrained -V 50 -K 100
+```
+
+
+
 ### **Multiple interventions**  (`MultiActionRMAB` in `multi_action.py`)
 
 The multiple-invention RMAB setting is implemented in `multi_action.py` as `MultiActionRMAB` with `link_type='sigmoid'`.

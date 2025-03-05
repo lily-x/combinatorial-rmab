@@ -127,7 +127,7 @@ def baseline_iterative_dqn(rmab, net, init_states, budget=None):
                     lowest_cost = np.min(available_arm_costs[available_arm_costs != -1])  # find cheapest available arm
                     while remaining_cap > lowest_cost:  # while we can still afford any arm
                         best_value = -1
-                        best_arm is not None
+                        best_arm = None
                         for j in range(rmab.n_arms):
                             if available_arm_costs[j] == -1: continue   # if we've already assigned this arm
                             if available_arm_costs[j] > remaining_cap: continue  # if we've already exceeded budget

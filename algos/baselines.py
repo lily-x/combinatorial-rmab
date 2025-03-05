@@ -227,9 +227,6 @@ def baseline_greedy_iterative_myopic(rmab, init_states, budget=None):
 
                 # walk down the workers, then pick all arms such that there's capacity
                 available_arm_costs = rmab.arm_costs.copy()
-
-                print('  arm costs', available_arm_costs)
-                print('  capacity ', rmab.worker_capacity)
                 
                 for i in workers:
                     best_value = -1

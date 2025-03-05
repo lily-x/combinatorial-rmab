@@ -36,7 +36,6 @@ def visualize_graph(rmab, out_dir, good_actions=None, bad_actions=None):
     for i in range(rmab.action_dim):
         for j in range(rmab.n_arms):
             if rmab.weights_p[j][i] != 0:
-                print(i,j)
                 B.add_edge(i, num_to_chr(j), weight_p=rmab.weights_p[j][i], weight_q=0)
                 labels[(i, num_to_chr(j))] = f'{rmab.weights_p[j][i]:.2f}'
 
@@ -85,8 +84,6 @@ def make_geometric(weights_p, init_state):
             if weights_p[j][i] != 0:
                 edge_index.append((i, j))
                 edge_attr.append((weights_p[j][i]))
-
-    print('edge index', edge_index)
 
     edge_index = torch.tensor(edge_index, dtype=torch.int64, device=device).T
     edge_attr  = torch.tensor(edge_attr, dtype=torch.float, device=device).T

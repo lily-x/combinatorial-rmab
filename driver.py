@@ -44,8 +44,6 @@ if not os.path.exists(out_dir):
 
 
 if __name__ == '__main__':
-    print("in main")
-
     parser = argparse.ArgumentParser()
     parser.add_argument('--seed', '-s', help='random seed', type=int, default=0)
     parser.add_argument('--horizon', '-H', help='time horizon', type=int, default=20)

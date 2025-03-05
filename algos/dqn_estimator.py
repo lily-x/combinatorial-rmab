@@ -378,7 +378,8 @@ class DQNSolver:
                                                             # gap=0.10,
                                                             # time_limit=100,
                                                             threads=4,
-                                                            log_dir='gurobi_logs')
+                                                            # log_dir='gurobi_logs'
+                                                            )
                     best_actions = results['sol']
                     self.memoizer.add(next_state_tup, best_actions)
 
