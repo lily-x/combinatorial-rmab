@@ -36,7 +36,7 @@ class RoutingRMAB(StandardRMAB):
 
         if G is None:
             assert self.n_arms in [20, 40, 60, 80, 100]
-            in_file ='./environment/tube_network.pkl'
+            in_file ='./environment/network/tube_network.pkl'
             with open(in_file, 'rb') as handle:
                 tube_network = pickle.load(handle)
             G = tube_network[f'G[{self.n_arms}]']
